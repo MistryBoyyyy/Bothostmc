@@ -24,6 +24,7 @@ const ANIM_EMOJIS = [
 ];
 // extra emoji servers (bot jitne servers me hai, unke emojis bhi inline use hote hain)
 const GUILD_EMO_FILE = path.join(__dirname, '..', 'data', 'guild-emojis.json');
+const EXTERNAL_EMO_FILE = path.join(__dirname, '..', 'data', 'external-emojis.json');
 function loadGuildEmojis() {
   try {
     const arr = JSON.parse(readFileSync(GUILD_EMO_FILE, 'utf8'));
@@ -31,6 +32,10 @@ function loadGuildEmojis() {
     ANIM_EMOJIS.push(...Object.entries(emo).filter(([k, v]) => v?.animated && k !== 'banners').map(([k, v]) => ({ key: k, name: v.name, id: v.id, url: `https://cdn.discordapp.com/emojis/${v.id}.gif?size=64` })));
     ANIM_EMOJIS.push(...(emo.vault ?? []).map((v) => ({ key: v.key, name: v.name, id: v.id, url: v.url })));
     ANIM_EMOJIS.push(...arr.map((v) => ({ key: v.key, name: v.name, id: v.id, url: `https://cdn.discordapp.com/emojis/${v.id}.gif?size=64` })));
+  } catch {}
+  try {
+    const ext = JSON.parse(readFileSync(EXTERNAL_EMO_FILE, 'utf8'));
+    ANIM_EMOJIS.push(...ext.map((v) => ({ key: v.key, name: v.name, id: v.id, url: `https://cdn.discordapp.com/emojis/${v.id}.gif?size=64` })));
   } catch {}
 }
 loadGuildEmojis();
@@ -43,7 +48,7 @@ const catOf = (k) => (CORE_KEYS.has(k) ? 'core' : k.startsWith('gem_') ? 'gems' 
       : k.startsWith('st_') ? 'status' : k.startsWith('party_') ? 'party' : k.startsWith('gest_') ? 'gestures'
         : k.startsWith('rank_') ? 'ranks' : k.startsWith('b_') ? 'banners' : /arrow/.test(k) ? 'arrows' : /block/.test(k) ? 'blocks'
           : /creeper|enderman|tnt|minecart|obsidian|redstone|nether|wither|ghast|blaze|steve|villager|pickaxe|diamond|emerald|bedrock|deepslate|minecraft|ender|slime|zombie|skeleton|portal/.test(k) ? 'mc'
-          : /maint|warn|construct|wrench|hammer|repair|toolkit|builder|caution|danger|gear|cog|drill|screw/.test(k) ? 'maint' : 'more');
+          : /maint|warn|construct|wrench|hammer|repair|toolkit|builder|caution|danger|gear|cog|drill|screw/.test(k) ? 'maint' : k.startsWith('x_') ? 'extra' : 'more');
 
 // ---------- bot profile persistence ----------
 const PROFILE_FILE = path.join(__dirname, '..', 'data', 'botprofile.json');
