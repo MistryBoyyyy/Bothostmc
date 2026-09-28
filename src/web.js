@@ -178,6 +178,42 @@ app.post('/api/welcome-test', async (req, res) => {
   await ch.send({ embeds: [eb] });
   res.json({ ok: true });
 });
+// ---------- store ranks ----------
+const RANKS_FILE = path.join(__dirname, '..', 'data', 'ranks.json');
+app.get('/api/ranks', async (req, res) => {
+  const uid = getSession(req); if (!uid || !isOwner(uid)) return res.status(401).json({ error: 'unauthorized' });
+  let cfg; try { cfg = JSON.parse(readFileSync(RANKS_FILE, 'utf8')); } catch { return res.json([]); }
+  const g = await guild();
+  res.json(cfg.ranks.map((r) => {
+    const role = g.roles.cache.get(r.role);
+    return { ...r, count: role ? role.members.size : 0 };
+  }));
+});
+app.get('/api/members', async (req, res) => {
+  const uid = getSession(req); if (!uid || !isOwner(uid)) return res.status(401).json({ error: 'unauthorized' });
+  const q = (req.query.q || '').trim();
+  if (q.length < 2) return res.json([]);
+  const g = await guild();
+  const m = await g.members.fetch({ query: q, limit: 8 }).catch(() => null);
+  res.json(m ? [...m.values()].map((x) => ({ id: x.id, tag: x.user.username, nick: x.nickname || '' })) : []);
+});
+app.post('/api/ranks/assign', async (req, res) => {
+  const uid = getSession(req); if (!uid || !isOwner(uid)) return res.status(401).json({ error: 'unauthorized' });
+  const { uid: target, key, action } = req.body || {};
+  let cfg; try { cfg = JSON.parse(readFileSync(RANKS_FILE, 'utf8')); } catch { return res.status(500).json({ error: 'no ranks config' }); }
+  const rank = cfg.ranks.find((r) => r.key === key);
+  if (!target || !rank) return res.status(400).json({ error: 'member + rank chahiye' });
+  const g = await guild();
+  const mem = await g.members.fetch(target).catch(() => null);
+  if (!mem) return res.status(404).json({ error: 'member nahi mila' });
+  try {
+    if (action === 'remove') await mem.roles.remove(rank.role);
+    else await mem.roles.add(rank.role);
+    console.log(`[ranks] ${rank.name} ${action === 'remove' ? 'removed from' : 'assigned to'} ${mem.user.username} by owner`);
+    res.json({ ok: true, tag: mem.user.username, rank: rank.name, action: action === 'remove' ? 'removed' : 'assigned' });
+  } catch (e) { res.status(500).json({ error: String(e.message || e).slice(0, 140) }); }
+});
+
 app.get('/api/modlog', async (req, res) => {
   const uid = getSession(req); if (!uid || !isOwner(uid)) return res.status(401).json({ error: 'unauthorized' });
   const cfg = getGuildConfig(GUILD_ID); const g = await guild();
@@ -412,6 +448,7 @@ app.get('/dashboard', async (req, res) => {
       <a class="nav" data-p="announce"><img src="${em('bolt')}"><span>Announce</span></a>
       <a class="nav" data-p="automod"><img src="${em('sword')}"><span>AutoMod</span></a>
       <a class="nav" data-p="welcome"><img src="${em('heart')}"><span>Welcome</span></a>
+      <a class="nav" data-p="ranks"><img src="${em('trophy')}"><span>Ranks</span></a>
       <a class="nav" data-p="modlog"><img src="${em('lock')}"><span>Mod Logs</span></a>
       <a class="nav" data-p="music"><img src="${em('music')}"><span>Music</span></a>
       <a class="nav" data-p="bot"><img src="${em('crown')}"><span>Bot Profile</span></a>
@@ -437,6 +474,19 @@ app.get('/dashboard', async (req, res) => {
         <h2 class="grad"><img src="${em('heart')}"> Welcome System</h2>
         <div class="preview rv" id="wprev"></div>
         ${welcomeEditHTML}
+      </section>
+      <section id="ranks" class="panel">
+        <h2 class="grad"><img src="${em('trophy')}"> Store Ranks</h2>
+        <div class="card rv">
+          <label>Member dhundo — username type karo, result pe click karke select karo</label>
+          <input id="rksearch" class="in" placeholder="e.g. spacygaming...">
+          <div id="rkresults"></div>
+          <label>Rank select karo</label>
+          <select id="rkrank" class="in"></select>
+          <div class="mbtns"><button class="btn" id="rkadd">✅ Assign Rank</button><button class="btn red" id="rkremove">❌ Remove Rank</button></div>
+          <div id="rkout"></div>
+        </div>
+        <div id="rkcards" class="feat"></div>
       </section>
       <section id="modlog" class="panel">
         <h2 class="grad"><img src="${em('lock')}"> Mod Logs</h2>
@@ -695,6 +745,46 @@ function setTheme(i){var t=THEMES[i%THEMES.length];var r=document.documentElemen
 try{setTheme(parseInt(localStorage.getItem('nexus-theme')||'0',10))}catch(e){setTheme(0)}
 var tb=document.getElementById('themeBtn');
 if(tb)tb.onclick=function(){var cur=0;try{cur=parseInt(localStorage.getItem('nexus-theme')||'0',10)}catch(e){}setTheme(cur+1)};
+// store ranks panel — cards + member search + assign/remove
+(function(){
+ if(!document.getElementById('rkcards'))return;
+ var selUid=null;
+ function loadRanks(){
+  api('/api/ranks').then(function(ranks){
+   var sel=document.getElementById('rkrank');
+   if(sel&&sel.options.length===0){ranks.forEach(function(r){var o=document.createElement('option');o.value=r.key;o.textContent=r.emoji+' '+r.name+' — Rs.'+r.price;sel.appendChild(o)})}
+   var c=document.getElementById('rkcards');if(!c)return;c.innerHTML='';
+   ranks.forEach(function(r){
+    var d=document.createElement('div');d.className='fcard rv';
+    d.style.borderTop='4px solid #'+r.color.toString(16).padStart(6,'0');
+    d.innerHTML='<h3>'+r.emoji+' '+r.name+'</h3><p style="font-size:22px;color:var(--cyan)"><b>₹'+r.price+'</b></p><p>🏠 '+r.perks.homes+' Homes<br>🛒 '+r.perks.auctions+' Auction slots<br>🗄️ '+r.perks.vaults+' Vaults<br>💺 /sit &nbsp;•&nbsp; ⚔️ Kits</p><p style="color:var(--dim)">'+r.count+' member'+(r.count===1?'':'s')+'</p>';
+    c.appendChild(d);
+   });
+  });
+ }
+ loadRanks();
+ var si=document.getElementById('rksearch'),res=document.getElementById('rkresults'),tm=null;
+ if(si)si.oninput=function(){clearTimeout(tm);tm=setTimeout(function(){
+  api('/api/members?q='+encodeURIComponent(si.value)).then(function(ms){
+   res.innerHTML='';selUid=null;
+   ms.forEach(function(m){var b=document.createElement('button');b.className='btn alt';b.style.margin='4px 4px 0 0';b.textContent=(m.nick?m.nick+' (@':'@')+m.tag+')';
+    b.onclick=function(){selUid=m.id;res.querySelectorAll('button').forEach(function(x){x.classList.remove('alt');x.classList.add('red')});b.classList.remove('red');b.textContent='✔ '+m.tag;};
+    res.appendChild(b)});
+   if(!ms.length&&si.value.length>1)res.innerHTML='<p style="color:var(--dim)">Koi member nahi mila</p>';
+  });
+ },400)};
+ function act(a){var out=document.getElementById('rkout');
+  if(!selUid){out.textContent='⚠️ Pehle member select karo (search karke click karo)';return}
+  var sel=document.getElementById('rkrank');
+  api('/api/ranks/assign',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({uid:selUid,key:sel.value,action:a})}).then(function(r){
+   out.textContent=r.ok?('✅ '+r.rank+' '+r.action+' → @'+r.tag):('❌ '+(r.error||'fail'));
+   loadRanks();
+  });
+ }
+ var ab=document.getElementById('rkadd'),rb=document.getElementById('rkremove');
+ if(ab)ab.onclick=function(){act('add')};
+ if(rb)rb.onclick=function(){act('remove')};
+})();
 // music studio: voice channels + search + play
 if(document.getElementById('vchan'))api('/api/voicechannels').then(function(vcs){var o='';vcs.forEach(function(c){o+='<option value="'+c.id+'">🔊 '+esc(c.name)+'</option>'});var v=document.getElementById('vchan');if(v)v.innerHTML=o});
 var mg=document.getElementById('mgo');
