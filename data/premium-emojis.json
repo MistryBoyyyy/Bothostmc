@@ -1,0 +1,329 @@
+{
+ "gem": {
+  "id": "1553416906067681433",
+  "animated": true,
+  "name": "pgem",
+  "pngId": "1553416912719974460"
+ },
+ "crown": {
+  "id": "1553416917841354854",
+  "animated": true,
+  "name": "pcrown",
+  "pngId": "1553416923264458803"
+ },
+ "sparkle": {
+  "id": "1553416928272449667",
+  "animated": true,
+  "name": "psparkle",
+  "pngId": "1553416933993349141"
+ },
+ "trophy": {
+  "id": "1553416939240554588",
+  "animated": true,
+  "name": "ptrophy",
+  "pngId": "1553416944810725486"
+ },
+ "gift": {
+  "id": "1553416949709414531",
+  "animated": true,
+  "name": "pgift",
+  "pngId": "1553416954797232189"
+ },
+ "fire": {
+  "id": "1553416994613764099",
+  "animated": true,
+  "name": "pfire",
+  "pngId": "1553417000372404304"
+ },
+ "banners": {
+  "welcome": "https://cdn.discordapp.com/emojis/1553417961564545085.gif",
+  "giveaway": "https://cdn.discordapp.com/emojis/1553417969118220399.gif",
+  "invites": "https://cdn.discordapp.com/emojis/1553417975162216498.gif",
+  "server": "https://cdn.discordapp.com/emojis/1553417982342860850.gif"
+ },
+ "ticket": {
+  "id": "1553417003505819748",
+  "animated": true,
+  "name": "pticket",
+  "pngId": "1553417007289077931"
+ },
+ "lock": {
+  "id": "1553417010438873238",
+  "animated": true,
+  "name": "plock",
+  "pngId": "1553417013559558244"
+ },
+ "hourglass": {
+  "id": "1553417016470151322",
+  "animated": true,
+  "name": "phourglass",
+  "pngId": "1553417019704090644"
+ },
+ "pick": {
+  "id": "1553417022212415633",
+  "animated": true,
+  "name": "ppick",
+  "pngId": "1553417025601273877"
+ },
+ "music": {
+  "id": "1553483685703979099",
+  "animated": true,
+  "name": "pmusic"
+ },
+ "rmc": {
+  "id": "1553638060514738247",
+  "animated": true,
+  "name": "prmc"
+ },
+ "sword": {
+  "id": "1553638061773033506",
+  "animated": true,
+  "name": "psword"
+ },
+ "creeper": {
+  "id": "1553638063186645023",
+  "animated": true,
+  "name": "pcreeper"
+ },
+ "tnt": {
+  "id": "1553638064142819409",
+  "animated": true,
+  "name": "ptnt"
+ },
+ "heart": {
+  "id": "1553638065535459378",
+  "animated": true,
+  "name": "pheart"
+ },
+ "coin": {
+  "id": "1553638066911191096",
+  "animated": true,
+  "name": "pcoin"
+ },
+ "star": {
+  "id": "1553638068488118362",
+  "animated": true,
+  "name": "pstar"
+ },
+ "grass": {
+  "id": "1553638072279891999",
+  "animated": true,
+  "name": "pgrass"
+ },
+ "potion": {
+  "id": "1553638073672409128",
+  "animated": true,
+  "name": "ppotion"
+ },
+ "bolt": {
+  "id": "1553638075614236712",
+  "animated": true,
+  "name": "pbolt"
+ },
+ "vault": [
+  {
+   "key": "_welcome",
+   "id": "1553417961564545085",
+   "name": "b_welcome",
+   "url": "https://cdn.discordapp.com/emojis/1553417961564545085.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "_giveaway",
+   "id": "1553417969118220399",
+   "name": "b_giveaway",
+   "url": "https://cdn.discordapp.com/emojis/1553417969118220399.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "_invites",
+   "id": "1553417975162216498",
+   "name": "b_invites",
+   "url": "https://cdn.discordapp.com/emojis/1553417975162216498.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "_server",
+   "id": "1553417982342860850",
+   "name": "b_server",
+   "url": "https://cdn.discordapp.com/emojis/1553417982342860850.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_angry",
+   "id": "1553675078045011968",
+   "name": "pface_angry",
+   "url": "https://cdn.discordapp.com/emojis/1553675078045011968.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_bruh",
+   "id": "1553675079517478952",
+   "name": "pface_bruh",
+   "url": "https://cdn.discordapp.com/emojis/1553675079517478952.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_cool",
+   "id": "1553675081404911686",
+   "name": "pface_cool",
+   "url": "https://cdn.discordapp.com/emojis/1553675081404911686.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_cry",
+   "id": "1553675082658742413",
+   "name": "pface_cry",
+   "url": "https://cdn.discordapp.com/emojis/1553675082658742413.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_evil",
+   "id": "1553675083854118924",
+   "name": "pface_evil",
+   "url": "https://cdn.discordapp.com/emojis/1553675083854118924.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_gg",
+   "id": "1553675084969808006",
+   "name": "pface_gg",
+   "url": "https://cdn.discordapp.com/emojis/1553675084969808006.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_happy",
+   "id": "1553675086517510215",
+   "name": "pface_happy",
+   "url": "https://cdn.discordapp.com/emojis/1553675086517510215.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_hype",
+   "id": "1553675087633195079",
+   "name": "pface_hype",
+   "url": "https://cdn.discordapp.com/emojis/1553675087633195079.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_laugh",
+   "id": "1553675088996343818",
+   "name": "pface_laugh",
+   "url": "https://cdn.discordapp.com/emojis/1553675088996343818.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_lol",
+   "id": "1553675093627113543",
+   "name": "pface_lol",
+   "url": "https://cdn.discordapp.com/emojis/1553675093627113543.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_love",
+   "id": "1553675094608445514",
+   "name": "pface_love",
+   "url": "https://cdn.discordapp.com/emojis/1553675094608445514.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_rip",
+   "id": "1553675096202420328",
+   "name": "pface_rip",
+   "url": "https://cdn.discordapp.com/emojis/1553675096202420328.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_sad",
+   "id": "1553675097775149106",
+   "name": "pface_sad",
+   "url": "https://cdn.discordapp.com/emojis/1553675097775149106.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_shock",
+   "id": "1553675099696013382",
+   "name": "pface_shock",
+   "url": "https://cdn.discordapp.com/emojis/1553675099696013382.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_sleep",
+   "id": "1553675100614824048",
+   "name": "pface_sleep",
+   "url": "https://cdn.discordapp.com/emojis/1553675100614824048.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_wink",
+   "id": "1553675102120579142",
+   "name": "pface_wink",
+   "url": "https://cdn.discordapp.com/emojis/1553675102120579142.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "face_wow",
+   "id": "1553675103236259920",
+   "name": "pface_wow",
+   "url": "https://cdn.discordapp.com/emojis/1553675103236259920.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_grassblock",
+   "id": "1554050255203471432",
+   "name": "mc_grassblock",
+   "url": "https://cdn.discordapp.com/emojis/1554050255203471432.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_portal",
+   "id": "1554050262350692432",
+   "name": "mc_portal",
+   "url": "https://cdn.discordapp.com/emojis/1554050262350692432.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_arrow_blue",
+   "id": "1554050269137084416",
+   "name": "mc_arrow_blue",
+   "url": "https://cdn.discordapp.com/emojis/1554050269137084416.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_arrow_white",
+   "id": "1554050277504458782",
+   "name": "mc_arrow_white",
+   "url": "https://cdn.discordapp.com/emojis/1554050277504458782.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_caution",
+   "id": "1554050285037428816",
+   "name": "mc_caution",
+   "url": "https://cdn.discordapp.com/emojis/1554050285037428816.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_gears",
+   "id": "1554050292180455516",
+   "name": "mc_gears",
+   "url": "https://cdn.discordapp.com/emojis/1554050292180455516.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_enderman",
+   "id": "1554050300543766538",
+   "name": "mc_enderman",
+   "url": "https://cdn.discordapp.com/emojis/1554050300543766538.gif?size=64",
+   "loc": "main"
+  },
+  {
+   "key": "mc_diamond",
+   "id": "1554050307317698641",
+   "name": "mc_diamond",
+   "url": "https://cdn.discordapp.com/emojis/1554050307317698641.gif?size=64",
+   "loc": "main"
+  }
+ ],
+ "local": []
+}
