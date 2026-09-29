@@ -1,0 +1,302 @@
+[
+ {
+  "key": "mc_axolotl",
+  "name": "mc_axolotl",
+  "id": "1554424164272574545",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_babyman",
+  "name": "mc_babyman",
+  "id": "1554424192886374450",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_bed",
+  "name": "mc_bed",
+  "id": "1554424221709508658",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_bee",
+  "name": "mc_bee",
+  "id": "1554424250855850045",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_bluebird",
+  "name": "mc_bluebird",
+  "id": "1554424281532866560",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_cake",
+  "name": "mc_cake",
+  "id": "1554424311006371840",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_campfire",
+  "name": "mc_campfire",
+  "id": "1554424340815282217",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_cauldron",
+  "name": "mc_cauldron",
+  "id": "1554424372893188157",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_chest",
+  "name": "mc_chest",
+  "id": "1554424401905328219",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_chestopen",
+  "name": "mc_chestopen",
+  "id": "1554424430770262048",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_clock",
+  "name": "mc_clock",
+  "id": "1554424459275018261",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_diasword",
+  "name": "mc_diasword",
+  "id": "1554424490165805127",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_dolphin",
+  "name": "mc_dolphin",
+  "id": "1554424519215546379",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_dragon",
+  "name": "mc_dragon",
+  "id": "1554424548974141563",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_emerald",
+  "name": "mc_emerald",
+  "id": "1554424577617035314",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_enchbook",
+  "name": "mc_enchbook",
+  "id": "1554424606138302587",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_enchhoe",
+  "name": "mc_enchhoe",
+  "id": "1554424635167084684",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_endshake",
+  "name": "mc_endshake",
+  "id": "1554424664401379358",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_fire",
+  "name": "mc_fire",
+  "id": "1554424694780727386",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_fireresist",
+  "name": "mc_fireresist",
+  "id": "1554424723415498802",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_fox",
+  "name": "mc_fox",
+  "id": "1554424751877914647",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_frog",
+  "name": "mc_frog",
+  "id": "1554424780558573618",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_gapple",
+  "name": "mc_gapple",
+  "id": "1554424809188888677",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_golem",
+  "name": "mc_golem",
+  "id": "1554424838175727657",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_greenbird",
+  "name": "mc_greenbird",
+  "id": "1554424867284320297",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_haste",
+  "name": "mc_haste",
+  "id": "1554424895805464650",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_mcheart",
+  "name": "mc_mcheart",
+  "id": "1554424924674854964",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_minichest",
+  "name": "mc_minichest",
+  "id": "1554424955738005555",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_netheraxe",
+  "name": "mc_netheraxe",
+  "id": "1554424986163351624",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_netherite",
+  "name": "mc_netherite",
+  "id": "1554425015024484405",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_netherpick",
+  "name": "mc_netherpick",
+  "id": "1554425043876839554",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_nightvis",
+  "name": "mc_nightvis",
+  "id": "1554425071978680354",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_opendchest",
+  "name": "mc_opendchest",
+  "id": "1554425103226511457",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_parrot",
+  "name": "mc_parrot",
+  "id": "1554425132225663048",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_phantom",
+  "name": "mc_phantom",
+  "id": "1554425162009419857",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_poison",
+  "name": "mc_poison",
+  "id": "1554425190551785613",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_potion2",
+  "name": "mc_potion2",
+  "id": "1554425219211337728",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_redbird",
+  "name": "mc_redbird",
+  "id": "1554425247908757504",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_sheep",
+  "name": "mc_sheep",
+  "id": "1554425276916568074",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_shield",
+  "name": "mc_shield",
+  "id": "1554425305505071174",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_shulker",
+  "name": "mc_shulker",
+  "id": "1554425334378799134",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_steve",
+  "name": "mc_steve",
+  "id": "1554425363205988352",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_strength",
+  "name": "mc_strength",
+  "id": "1554425393866473583",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_totem",
+  "name": "mc_totem",
+  "id": "1554425422370967671",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_trident",
+  "name": "mc_trident",
+  "id": "1554425451315859476",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_turtle",
+  "name": "mc_turtle",
+  "id": "1554425479719559239",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_warden",
+  "name": "mc_warden",
+  "id": "1554425509281005678",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_weakness",
+  "name": "mc_weakness",
+  "id": "1554425538100072570",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_witherrose",
+  "name": "mc_witherrose",
+  "id": "1554425567087038535",
+  "guild": "1129743494756442185"
+ },
+ {
+  "key": "mc_xp",
+  "name": "mc_xp",
+  "id": "1554425596115820605",
+  "guild": "1129743494756442185"
+ }
+]

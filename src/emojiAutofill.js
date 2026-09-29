@@ -10,7 +10,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PICK_DIR = path.join(__dirname, '..', 'assets', 'mcpick');
+const PICK_DIR = path.join(__dirname, '..', 'assets', 'mcpremium');
 const OUT = path.join(__dirname, '..', 'data', 'guild-emojis.json');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
