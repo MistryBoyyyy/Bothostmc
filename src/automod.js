@@ -157,23 +157,93 @@ export async function handleAutomod(message) {
   }
 }
 
-// ---------- Images-off permission sweep ----------
+// Read-only boards: members can look and react, but cannot type.
+const READONLY_CHANNELS = new Set([
+  '1539608011780268082', // welcome
+  '1539608012354879550', // invites
+  '1539608024497393715', // boosts
+  '1539608021834010706', // giveaway
+  '1539608015068729384', // information
+  '1539608016100270151', // announcement
+  '1539608038162432062', // ticket panel
+  '1554191163295010848', // ranks store
+]);
+// Hidden from everyone except the team. Private support-* tickets are NOT in here.
+const STAFF_CATEGORY = '1539608009859137566';
+const STAFF_CHAT = '1539608034811183175';
+const STAFF_VOICE = '1539608036673323139';
+const TEAM_ROLES = [
+  '1553425480609173545', // owner
+  '1553425479678304326', // co-owner
+  '1553430283657805854', // security
+  '1553425477962563614', // developer
+  '1553425477031432302', // staff
+  '1553425476272521256', // helper
+];
+
+function noChat() {
+  return {
+    ViewChannel: true,
+    ReadMessageHistory: true,
+    AddReactions: true,
+    SendMessages: false,
+    SendTTSMessages: false,
+    SendVoiceMessages: false,
+    SendPolls: false,
+    CreatePublicThreads: false,
+    CreatePrivateThreads: false,
+    SendMessagesInThreads: false,
+    AttachFiles: false,
+  };
+}
+
+// ---------- Images-off + channel layout sweep ----------
 export async function applyImageLock(guild) {
   const cfg = getGuildConfig(guild.id);
-  const staffIds = new Set(cfg.ticketStaffRoles ?? []);
+  const staffIds = new Set([...(cfg.ticketStaffRoles ?? []), ...TEAM_ROLES]);
   const roles = [...guild.roles.cache.values()].filter((r) => staffIds.has(r.id));
+  const main = guild.id === '1539606347513860186';
   let locked = 0;
   for (const ch of guild.channels.cache.values()) {
-    if (!ch.isTextBased() || (ch.type >= 10 && ch.type <= 12)) continue; // skip threads
+    if (ch.type >= 10 && ch.type <= 12) continue; // skip threads
+    const hidden = main && (ch.id === STAFF_CATEGORY || ch.id === STAFF_CHAT || ch.id === STAFF_VOICE || ch.id === cfg.modlog || ch.parentId === STAFF_CATEGORY);
+    const readonly = main && READONLY_CHANNELS.has(ch.id);
+    const text = ch.isTextBased?.() && ch.type !== 4;
+    if (!text && !hidden) continue;
     try {
-      const everyoneDeny = { AttachFiles: false };
-      if (cfg.modlog && ch.id === cfg.modlog) {
-        everyoneDeny.SendMessages = false;
-        everyoneDeny.AddReactions = false;
-      }
-      await ch.permissionOverwrites.create(guild.id, everyoneDeny, { type: 0, reason: 'RizokMC: images off' });
-      for (const r of roles) {
-        await ch.permissionOverwrites.create(r.id, { AttachFiles: true }, { type: 0, reason: 'RizokMC: staff images allowed' }).catch(() => {});
+      if (hidden) {
+        await ch.permissionOverwrites.edit(guild.id, {
+          ViewChannel: false,
+          Connect: false,
+          SendMessages: false,
+          AddReactions: false,
+          AttachFiles: false,
+        }, { type: 0, reason: 'RizokMC: staff-only' });
+        const voice = ch.type === 2 || ch.type === 13;
+        const modlog = ch.id === cfg.modlog;
+        for (const r of roles) {
+          await ch.permissionOverwrites.edit(r.id, voice ? {
+            ViewChannel: true, Connect: true, Speak: true, Stream: true, UseVAD: true,
+            SendMessages: true, ReadMessageHistory: true, AttachFiles: true,
+          } : modlog ? {
+            ViewChannel: true, ReadMessageHistory: true, SendMessages: false, AttachFiles: false, AddReactions: false,
+          } : {
+            ViewChannel: true, SendMessages: true, ReadMessageHistory: true,
+            AttachFiles: true, EmbedLinks: true, AddReactions: true, UseExternalEmojis: true,
+          }, { type: 0, reason: 'RizokMC: staff can see' }).catch(() => {});
+        }
+      } else if (readonly) {
+        await ch.permissionOverwrites.edit(guild.id, noChat(), { type: 0, reason: 'RizokMC: read-only board' });
+      } else if (text && !String(ch.name).startsWith('support-')) {
+        const everyoneDeny = { AttachFiles: false };
+        if (cfg.modlog && ch.id === cfg.modlog) {
+          everyoneDeny.SendMessages = false;
+          everyoneDeny.AddReactions = false;
+        }
+        await ch.permissionOverwrites.edit(guild.id, everyoneDeny, { type: 0, reason: 'RizokMC: images off' });
+        for (const r of roles) {
+          await ch.permissionOverwrites.edit(r.id, { AttachFiles: true }, { type: 0, reason: 'RizokMC: staff images allowed' }).catch(() => {});
+        }
       }
       locked++;
     } catch { /* missing access on some channels */ }
