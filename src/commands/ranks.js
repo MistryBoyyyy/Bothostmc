@@ -9,19 +9,29 @@ export const data = new SlashCommandBuilder()
   .setName('ranks')
   .setDescription('View RizokMC store ranks, prices & perks');
 
+const TIER = { ash: 'Starter Tier', ember: 'Rising Tier', inferno: 'Elite Tier', flame: 'Legend Tier', divine: 'Ultimate Tier' };
+
 export async function execute(interaction) {
-  let cfg;
-  try { cfg = JSON.parse(readFileSync(path.join(__dirname, '..', '..', 'data', 'ranks.json'), 'utf8')); } catch { cfg = { ranks: [] }; }
+  let cfg, emo;
+  try {
+    cfg = JSON.parse(readFileSync(path.join(__dirname, '..', '..', 'data', 'ranks.json'), 'utf8'));
+    emo = JSON.parse(readFileSync(path.join(__dirname, '..', '..', 'data', 'premium-emojis.json'), 'utf8'));
+  } catch { return interaction.reply({ content: '❌ Store is loading, try again shortly.', ephemeral: true }); }
+  const M = {};
+  for (const [, v] of Object.entries(emo)) if (v && v.id && v.name) M[v.name] = v.id;
+  for (const v of emo.vault || []) if (v.id && v.name) M[v.name] = v.id;
+  const t = (n) => (M[n] ? `<a:${n}:${M[n]}>` : '•');
+
   const embed = new EmbedBuilder()
-    .setTitle('🏆 RIZOKMC — STORE RANKS')
+    .setTitle(`${t('pcrown')} THE RIZOKMC STORE`)
     .setColor(0xffd700)
-    .setDescription('⛏️ Minecraft Server: **play.rizokmc.fun** (Java + Bedrock)\n📈 Har agle rank me **+1 Home, +1 Vault, +1 Auction slot**');
+    .setDescription('**⛏️ Minecraft Java + Bedrock — `play.rizokmc.fun`**\n*Every tier adds: +1 Home • +1 Vault • +1 Auction Slot*');
   for (const r of cfg.ranks) {
     embed.addFields({
-      name: `${r.emoji} ${r.name} — ₹${r.price}`,
-      value: `🏠 ${r.perks.homes} Homes • 🛒 ${r.perks.auctions} Auction Slots • 🗄️ ${r.perks.vaults} Vaults • 💺 /sit • ⚔️ Kits`,
+      name: `${t('mc_arrow_white')} ${r.name} — ${TIER[r.key] || ''} — **₹${r.price}**`,
+      value: `${t('mc_portal')} ${r.perks.homes} Homes • ${t('plock')} ${r.perks.vaults} Vaults • ${t('mc_arrow_blue')} ${r.perks.auctions} Auctions • ${t('pstar')} /sit • ${t('psword')} Kits`,
     });
   }
-  embed.setFooter({ text: '🛒 Kharidne ke liye 🎫 support ticket kholo!' });
+  embed.setFooter({ text: `${'🛒'} To purchase — open a support ticket! • RizokMC Store` });
   await interaction.reply({ embeds: [embed] });
 }
