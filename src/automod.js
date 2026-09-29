@@ -180,6 +180,8 @@ const TEAM_ROLES = [
   '1553425477031432302', // staff
   '1553425476272521256', // helper
 ];
+// Staff voice only — not staff chat, not modlogs.
+const YOUTUBER_ROLES = ['1554520586309341281'];
 
 function noChat() {
   return {
@@ -231,6 +233,14 @@ export async function applyImageLock(guild) {
             ViewChannel: true, SendMessages: true, ReadMessageHistory: true,
             AttachFiles: true, EmbedLinks: true, AddReactions: true, UseExternalEmojis: true,
           }, { type: 0, reason: 'RizokMC: staff can see' }).catch(() => {});
+        }
+        if (ch.id === STAFF_VOICE) {
+          for (const id of YOUTUBER_ROLES) {
+            await ch.permissionOverwrites.edit(id, {
+              ViewChannel: true, Connect: true, Speak: true, Stream: true, UseVAD: true,
+              SendMessages: true, ReadMessageHistory: true, AttachFiles: true,
+            }, { type: 0, reason: 'RizokMC: youtuber staff VC' }).catch(() => {});
+          }
         }
       } else if (readonly) {
         await ch.permissionOverwrites.edit(guild.id, noChat(), { type: 0, reason: 'RizokMC: read-only board' });
