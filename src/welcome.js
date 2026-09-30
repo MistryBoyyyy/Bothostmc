@@ -56,7 +56,7 @@ export async function handleWelcome(member, inviterInfo) {
     inviterline,
     createdText: `<t:${Math.floor(member.user.createdTimestamp / 1000)}:R>`,
     serverIp: cfg.ip,
-    bedrockPort: cfg.bedrockPort ?? '25609',
+    bedrockPort: cfg.bedrockPort ?? '25957',
     fake: inviterInfo?.fake ?? false,
   });
 

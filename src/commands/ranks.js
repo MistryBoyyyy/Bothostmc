@@ -34,7 +34,7 @@ export async function execute(interaction) {
   const embed = new EmbedBuilder()
     .setTitle(`${t('pcrown')} ${small('THE RIZOKMC STORE')}`)
     .setColor(0xffd700)
-    .setDescription(`${t('ppick')} **${small('Java + Bedrock')}** — \`play.rizokmc.fun\`\n*${small('Bedrock port')} \`25609\` • ${small('each tier adds')} +1 ${small('home, vault, auction')}*`);
+    .setDescription(`${t('ppick')} **${small('Java + Bedrock')}** — \`play.rizokmc.fun\`\n*${small('Bedrock port')} \`25957\` • ${small('each tier adds')} +1 ${small('home, vault, auction')}*`);
   for (const r of ranks) {
     const ec = r.perks.enderchest ? `\n${t('mc_enderchest')} **/enderchest** — ${small('personal storage')}` : '';
     embed.addFields({

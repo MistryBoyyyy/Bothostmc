@@ -6,7 +6,7 @@ import E from './premium.js';
 export function buildIpEmbed(guild) {
   const cfg = getGuildConfig(guild.id);
   const ip = cfg.ip ?? 'play.rizokmc.fun';
-  const bedrockPort = cfg.bedrockPort ?? '25609';
+  const bedrockPort = cfg.bedrockPort ?? '25957';
 
   const embed = new EmbedBuilder()
     .setColor(Colors.Green)

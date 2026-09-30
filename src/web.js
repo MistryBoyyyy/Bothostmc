@@ -172,7 +172,7 @@ app.post('/api/welcome-test', async (req, res) => {
   const eb = new EmbedBuilder().setColor(Colors.Blurple)
     .setAuthor({ name: 'W E L C O M E  T O  R I Z O K M C' })
     .setDescription(text)
-    .addFields({ name: `${E.ppick ?? '⛏️'} Server IP`, value: '**play.rizokmc.fun**' }, { name: `${E.pgem ?? '💎'} Bedrock Port`, value: '**25609**' })
+    .addFields({ name: `${E.ppick ?? '⛏️'} Server IP`, value: '**play.rizokmc.fun**' }, { name: `${E.pgem ?? '💎'} Bedrock Port`, value: '**25957**' })
     .setFooter({ text: 'Dashboard preview' }).setTimestamp();
   if (E.banner_welcome) eb.setImage(E.banner_welcome);
   await ch.send({ embeds: [eb] });
@@ -698,7 +698,7 @@ function load(){
    if(tg){tg.innerHTML='';Object.keys(st.automod).forEach(function(k){var r=document.createElement('div');r.className='trow rv';r.innerHTML='<span>'+k+'</span><label class="sw"><input type="checkbox" data-k="'+k+'" '+(st.automod[k]?'checked':'')+'><i></i></label>';tg.appendChild(r)})}
   }
   var wp=document.getElementById('wprev');
-  if(wp)wp.innerHTML='<div class="emb"><div class="auth"><img src="${em('rmc')}">W E L C O M E&nbsp; T O&nbsp; R I Z O K M C</div><div class="desc">Welcome <b style="color:#00a8fc">@player</b> to <b>'+esc(st.name)+'</b>! 🎉\\nYou are member <b>#'+st.members+'</b>.</div><div><span class="fld"><b>⛏️ Server IP</b><span>play.rizokmc.fun</span></span><span class="fld"><b>💎 Bedrock</b><span>25609</span></span></div><img class="banner" src="${E.banner_welcome}"></div>';
+  if(wp)wp.innerHTML='<div class="emb"><div class="auth"><img src="${em('rmc')}">W E L C O M E&nbsp; T O&nbsp; R I Z O K M C</div><div class="desc">Welcome <b style="color:#00a8fc">@player</b> to <b>'+esc(st.name)+'</b>! 🎉\\nYou are member <b>#'+st.members+'</b>.</div><div><span class="fld"><b>⛏️ Server IP</b><span>play.rizokmc.fun</span></span><span class="fld"><b>💎 Bedrock</b><span>25957</span></span></div><img class="banner" src="${E.banner_welcome}"></div>';
   api('/api/modlog').then(function(logs){var m=document.getElementById('mlog');if(m){m.innerHTML='';logs.forEach(function(l){var d=document.createElement('div');d.className='logcard rv';d.innerHTML='<b>'+esc(l.title)+'</b><pre>'+esc(l.desc)+'</pre><time>'+new Date(l.time).toLocaleString()+'</time>';m.appendChild(d)});if(!logs.length)m.innerHTML='<div class="card">No logs yet.</div>'}});
   var ms=document.getElementById('mstat');
   if(ms)ms.innerHTML=st.music?'Now playing: <a style="color:var(--cyan)" href="'+st.music.url+'" target="_blank">'+esc(st.music.title)+'</a>':'Nothing playing right now.';
