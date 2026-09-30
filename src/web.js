@@ -757,7 +757,7 @@ if(tb)tb.onclick=function(){var cur=0;try{cur=parseInt(localStorage.getItem('nex
    ranks.forEach(function(r){
     var d=document.createElement('div');d.className='fcard rv';
     d.style.borderTop='4px solid #'+r.color.toString(16).padStart(6,'0');
-    d.innerHTML='<h3>'+r.emoji+' '+r.name+'</h3><p style="font-size:22px;color:var(--cyan)"><b>₹'+r.price+'</b></p><p>🏠 '+r.perks.homes+' Homes<br>🛒 '+r.perks.auctions+' Auction slots<br>🗄️ '+r.perks.vaults+' Vaults<br>💺 /sit &nbsp;•&nbsp; ⚔️ Kits</p><p style="color:var(--dim)">'+r.count+' member'+(r.count===1?'':'s')+'</p>';
+    d.innerHTML='<h3>'+r.emoji+' '+r.name+'</h3><p style="font-size:22px;color:var(--cyan)"><b>₹'+r.price+'</b></p><p>🏠 '+r.perks.homes+' Homes<br>🛒 '+r.perks.auctions+' Auction slots<br>🗄️ '+r.perks.vaults+' Vaults<br>💺 /sit &nbsp;•&nbsp; ⚔️ Kits'+(r.perks&&r.perks.enderchest?'<br>📦 /enderchest':'')+'</p><p style="color:var(--dim)">'+r.count+' member'+(r.count===1?'':'s')+'</p>';
     c.appendChild(d);
    });
   });

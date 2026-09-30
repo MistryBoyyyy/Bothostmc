@@ -5,16 +5,10 @@
       "key": "ash",
       "name": "ASH",
       "emoji": "🌫️",
-      "price": 69,
+      "price": 89,
       "color": 10397619,
       "role": "1554191142801637378",
-      "perks": {
-        "homes": 2,
-        "auctions": 3,
-        "vaults": 2,
-        "sit": true,
-        "kits": true
-      }
+      "perks": { "homes": 2, "auctions": 3, "vaults": 2, "sit": true, "kits": true, "enderchest": false }
     },
     {
       "key": "ember",
@@ -23,58 +17,34 @@
       "price": 129,
       "color": 16739072,
       "role": "1554191146886889595",
-      "perks": {
-        "homes": 3,
-        "auctions": 4,
-        "vaults": 3,
-        "sit": true,
-        "kits": true
-      }
-    },
-    {
-      "key": "inferno",
-      "name": "INFERNO",
-      "emoji": "🔴",
-      "price": 239,
-      "color": 16719360,
-      "role": "1554191150779338883",
-      "perks": {
-        "homes": 4,
-        "auctions": 5,
-        "vaults": 4,
-        "sit": true,
-        "kits": true
-      }
+      "perks": { "homes": 3, "auctions": 4, "vaults": 3, "sit": true, "kits": true, "enderchest": false }
     },
     {
       "key": "flame",
       "name": "FLAME",
       "emoji": "🔥",
-      "price": 329,
+      "price": 239,
       "color": 16754176,
       "role": "1554191154394964162",
-      "perks": {
-        "homes": 5,
-        "auctions": 6,
-        "vaults": 5,
-        "sit": true,
-        "kits": true
-      }
+      "perks": { "homes": 4, "auctions": 5, "vaults": 4, "sit": true, "kits": true, "enderchest": true }
+    },
+    {
+      "key": "inferno",
+      "name": "INFERNO",
+      "emoji": "🔴",
+      "price": 359,
+      "color": 16719360,
+      "role": "1554191150779338883",
+      "perks": { "homes": 5, "auctions": 6, "vaults": 5, "sit": true, "kits": true, "enderchest": true }
     },
     {
       "key": "divine",
       "name": "DIVINE",
       "emoji": "👑",
-      "price": 459,
+      "price": 469,
       "color": 16766720,
       "role": "1554191158001795243",
-      "perks": {
-        "homes": 6,
-        "auctions": 7,
-        "vaults": 6,
-        "sit": true,
-        "kits": true
-      }
+      "perks": { "homes": 6, "auctions": 7, "vaults": 6, "sit": true, "kits": true, "enderchest": true }
     }
   ]
 }
