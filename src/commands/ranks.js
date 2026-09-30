@@ -38,7 +38,7 @@ export async function execute(interaction) {
   for (const r of ranks) {
     const ec = r.perks.enderchest ? `\n${t('mc_enderchest')} **/enderchest** — ${small('personal storage')}` : '';
     embed.addFields({
-      name: `${t('mc_arrow_white')} ${small(r.name)} — ${small(TIER[r.key] || '')} — **₹${r.price}**`,
+      name: `${t('mc_arrow_right')} ${small(r.name)} — ${small(TIER[r.key] || '')} — **₹${r.price}**`,
       value: `${t('mc_portal')} **${r.perks.homes}** ${small('homes')} • ${t('plock')} **${r.perks.vaults}** ${small('vaults')} • ${t('mc_arrow_blue')} **${r.perks.auctions}** ${small('auctions')}\n${t('pstar')} **/sit** • ${t('psword')} ${small('kits')}${ec}`,
     });
   }
