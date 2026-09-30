@@ -3,7 +3,7 @@ import { EmbedBuilder, Colors } from 'discord.js';
 import { getGuildConfig } from './store.js';
 import E from './premium.js';
 
-export function buildWelcomeEmbed({ userMention, avatarUrl, serverName, count, inviterline, createdText, demo = false, serverIp = null, fake = false }) {
+export function buildWelcomeEmbed({ userMention, avatarUrl, serverName, count, inviterline, createdText, demo = false, serverIp = null, bedrockPort = null, fake = false }) {
   const embed = new EmbedBuilder()
     .setColor(Colors.Green)
     .setAuthor({ name: `W E L C O M E   T O   ${serverName.toUpperCase()}` });
@@ -20,6 +20,7 @@ export function buildWelcomeEmbed({ userMention, avatarUrl, serverName, count, i
       { name: `${E.pgem} Total Members`, value: `${count}`, inline: true },
       { name: `${E.psparkle} Account Age`, value: createdText, inline: true },
       ...(serverIp ? [{ name: `${E.ppick} Server IP`, value: `\`${serverIp}\``, inline: true }] : []),
+      ...(bedrockPort ? [{ name: `${E.pfire} Bedrock Port`, value: `\`${bedrockPort}\``, inline: true }] : []),
       { name: `${E.ptrophy} Invited By`, value: inviterline, inline: false }
     )
     .setFooter({ text: demo ? `${''}DEMO — real welcome messages look exactly like this` : 'RizokMC • Premium Welcomes' })
@@ -55,6 +56,7 @@ export async function handleWelcome(member, inviterInfo) {
     inviterline,
     createdText: `<t:${Math.floor(member.user.createdTimestamp / 1000)}:R>`,
     serverIp: cfg.ip,
+    bedrockPort: cfg.bedrockPort ?? '25609',
     fake: inviterInfo?.fake ?? false,
   });
 

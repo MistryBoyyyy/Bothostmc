@@ -110,7 +110,7 @@ const infoEmbed = new EmbedBuilder()
   .setDescription(
     `${E.pgem} ─────────────────────────────\n` +
     `⛏️  **Server IP** ❯ \`play.rizokmc.fun\`\n` +
-    `${E.pfire}  **Bedrock Port** ❯ \`19132\`\n` +
+    `${E.pfire}  **Bedrock Port** ❯ \`25609\`\n` +
     `${E.pcrown}  **Owner** ❯ <@${guild.ownerId}>\n` +
     `${E.psparkle} ─────────────────────────────\n` +
     `**Quick Guide:**\n` +

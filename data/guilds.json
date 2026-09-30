@@ -8,13 +8,15 @@
     "antispamTimeout": 60000,
     "maxMentions": 5,
     "welcomeChannel": "1539608011780268082",
-    "welcomeMessage": "Welcome {user} to **{server}**! 🎉\nYou are member **#{count}**.\n{inviterline}",
+    "welcomeMessage": "Welcome {user} to **{server}**! \ud83c\udf89\nYou are member **#{count}**.\n{inviterline}",
     "autorole": "1553425474213126368",
     "ticketCategory": "1539608004796743751",
     "ticketStaffRoles": [
       "1553425477962563614",
       "1553425477031432302",
       "1553425476272521256"
-    ]
+    ],
+    "ip": "play.rizokmc.fun",
+    "bedrockPort": "25609"
   }
 }

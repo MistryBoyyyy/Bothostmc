@@ -69,6 +69,7 @@ const DEFAULTS = {
   ticketCategory: null,
   ticketStaffRoles: [],
   ip: 'play.rizokmc.fun',
+  bedrockPort: '25609',
   antilink: true,
   antiinvite: true,
   antibadwords: true,
